@@ -1,12 +1,13 @@
 import socket
 import threading
 import json
+from typing import Any  
 
 server: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(("0.0.0.0", 5000))
 server.listen()
 
-clients: dict[str, socket.socket] = {}
+clients: dict[socket.socket, dict[str, Any]] = {}
 
 def handle_client(client: socket.socket) -> None:
     client_data = {}
