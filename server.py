@@ -17,3 +17,8 @@ def handle_client(client: socket.socket) -> None:
         return
     if res_type == 'username':
         client_data["username"] = response.get("username")
+
+running = True
+while running:
+    client, addr = server.accept()
+    
